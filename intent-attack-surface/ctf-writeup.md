@@ -1,6 +1,4 @@
-# Intent Attack Surface CTF Write-up
-
-## Challenge: Basic Exported Activity
+﻿## Challenge: Basic Exported Activity
 **Category:** Android Security  
 **Points:** N/A  
 **Author:** Nephat
