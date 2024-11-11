@@ -1,0 +1,3 @@
+[submodule "intent-attack-surface/images"]
+	path = intent-attack-surface/images
+	url = https://github.com/nephat-gikunju/capture-the-flags.git
