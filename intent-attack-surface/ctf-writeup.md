@@ -1,4 +1,4 @@
-﻿## Challenge: Basic Exported Activity
+## Challenge: Basic Exported Activity
 **Category:** Android Security  
 **Points:** N/A  
 **Author:** Nephat
@@ -62,3 +62,48 @@ sudo apt install jadx
 adb --version
 ```
 
+## Challenge 2:Intent with extras
+
+
+## Challenge Description
+
+Call this activity and match the conditions to get flag 2 Intent with extras
+
+## Solution
+
+I tried launching `Flag2Activity` using ADB by first enabling the activity with:
+
+```bash
+adb shell pm enable io.hextree.attacksurface/.activities.Flag2Activity
+
+
+Then, I started the activity with:
+
+
+adb shell am start -n io.hextree.attacksurface/.activities.Flag2Activity
+```
+
+![Failed start](images/flag2Image1.png)
+ 
+## Activity code review
+
+I checked the activity code for the application and found that the program checks for:
+
+```java
+if (action == null || !action.equals("io.hextree.action.GIVE_FLAG")) {
+
+```
+If the condition is fulfilled the activity with the flag is launched.
+We can solve this by adding  the -a to include the action
+
+
+##
+
+```bash
+└─$ adb shell am start -n io.hextree.attacksurface/.activities.Flag2Activity -a io.hextree.action.GIVE_FLAG
+```
+![solved activity](images/flag2Image2.png)
+
+## Conclusion
+
+The solution to the "Flag 2 - Intent with Extras" challenge revolves around understanding how intents work in Android and how the app checks for specific intent actions. By sending the correct intent with the specified action, we can trigger the reveal of the flag. This highlights the importance of intent-based interactions in Android security, especially in scenarios where actions and extras are used to control app flow and behavior.
