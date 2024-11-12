@@ -1,17 +1,16 @@
 ## Challenge: Basic Exported Activity
-**Category:** Android Security  
-**Points:** N/A  
+**Category:** Android Security   
 **Author:** Nephat
 
-## Challenge Description
+### Challenge Description
 The challenge involves identifying and interacting with an exported activity within an Android application to retrieve a flag. The target activity is `io.hextree.attacksurface/.activities.Flag1Activity`.
 
-## Tools Used
+### Tools Used
 - **ADB (Android Debug Bridge)** - For launching and interacting with Android activities
 - **APKTool** - For decompiling the APK and analyzing the structure
 - **JADX** - For viewing the decompiled source code (can be installed on Kali Linux using `sudo apt install jadx`)
 
-## Walkthrough
+### Walkthrough
 
 ### 1. Initial Analysis
 First, we need to decompile the APK to understand its structure. Using JADX-GUI:
@@ -41,19 +40,19 @@ Upon executing the command, the Flag1Activity launches and displays the flag:
 
 ![Flag Display](images/flag-result.png)
 
-## Key Takeaways
+### Key Takeaways
 1. Android applications may contain exported activities that can be accessed directly through ADB
 2. The `AndroidManifest.xml` file is crucial for identifying potential entry points in Android applications
 3. Activities marked as `exported="true"` can pose security risks if not properly protected
 
-## Security Implications
+### Security Implications
 This challenge highlights a common security misconfiguration in Android applications where sensitive activities are accidentally exposed. In real-world applications, developers should:
 - Only export activities that are meant to be accessed by other applications
 - Implement proper authentication mechanisms for sensitive activities
 - Regularly audit the Android Manifest for security misconfigurations
 
 
-## Tools Installation
+### Tools Installation
 ```bash
 # Install JADX on Kali Linux
 sudo apt install jadx
@@ -62,14 +61,18 @@ sudo apt install jadx
 adb --version
 ```
 
-## Challenge 2:Intent with extras
 
 
-## Challenge Description
+
+
+# Challenge 2:Intent with extras
+
+
+### Challenge Description
 
 Call this activity and match the conditions to get flag 2 Intent with extras
 
-## Solution
+### Solution
 
 I tried launching `Flag2Activity` using ADB by first enabling the activity with:
 
@@ -85,7 +88,7 @@ adb shell am start -n io.hextree.attacksurface/.activities.Flag2Activity
 
 ![Failed start](images/flag2Image1.png)
  
-## Activity code review
+### Activity code review
 
 I checked the activity code for the application and found that the program checks for:
 
@@ -97,13 +100,13 @@ If the condition is fulfilled the activity with the flag is launched.
 We can solve this by adding  the -a to include the action
 
 
-##
+###
 
 ```bash
 └─$ adb shell am start -n io.hextree.attacksurface/.activities.Flag2Activity -a io.hextree.action.GIVE_FLAG
 ```
 ![solved activity](images/flag2Image2.png)
 
-## Conclusion
+### Conclusion
 
 The solution to the "Flag 2 - Intent with Extras" challenge revolves around understanding how intents work in Android and how the app checks for specific intent actions. By sending the correct intent with the specified action, we can trigger the reveal of the flag. This highlights the importance of intent-based interactions in Android security, especially in scenarios where actions and extras are used to control app flow and behavior.
