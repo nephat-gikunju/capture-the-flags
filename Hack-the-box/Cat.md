@@ -40,6 +40,9 @@ Use the following command to convert the `.ab` file into a `.tar` archive:
 java -jar abe.jar unpack cat.ab extracted.tar
 ```
 
+![extraction](images/restoration.png)
+
+
 Once the conversion is complete, extract the `.tar` file:
 
 ```bash
@@ -57,8 +60,14 @@ Upon inspecting the **apps** folder, no relevant data was found.
 #### **Shared Folder**
 Next, I explored the **shared** folder. Initially, nothing seemed significant. However, after some research and revisiting my approach, I identified a critical detail I had previously overlooked.
 
+![shared folder](images/pictures.png)
+
+
 #### **Finding the Flag**
 Inside the **shared/pictures** folder, there was an image. Upon closer examination of **image 4**, I discovered the flag hidden within the photo.
+
+![flag](images/image4.png)
+
 
 ---
 
