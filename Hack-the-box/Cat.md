@@ -1,4 +1,4 @@
-```markdown
+
 # CAT HTB CTF Walkthrough
 
 Welcome to this walkthrough of the **CAT** and Android box challenge from Hack The Box (HTB). This challenge revolves around extracting and analyzing data from a backup file. Let’s dive in!
@@ -68,4 +68,8 @@ The challenge required careful attention to detail and persistence. The key was 
 ---
 
 **Happy hacking!**
+
+---
+Made with ❤️ by Nephat
+
 ```
