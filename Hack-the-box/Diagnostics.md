@@ -1,4 +1,3 @@
-Here’s the updated report with the flag blurred to prevent easy copy-pasting:
 
 ---
 
