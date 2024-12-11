@@ -110,3 +110,50 @@ We can solve this by adding  the -a to include the action
 ### Conclusion
 
 The solution to the "Flag 2 - Intent with Extras" challenge revolves around understanding how intents work in Android and how the app checks for specific intent actions. By sending the correct intent with the specified action, we can trigger the reveal of the flag. This highlights the importance of intent-based interactions in Android security, especially in scenarios where actions and extras are used to control app flow and behavior.
+
+
+## CHALLENGE 3 - Intent with a Data URI
+
+### Challenge Description
+
+In this challenge, the goal is to interact with the `Flag3Activity` by meeting two specific conditions defined in the app's code. The activity is designed to respond only to intents that carry a specific action and a specific data URI. By analyzing the decompiled code, we can determine these requirements and construct the appropriate intent to retrieve the flag.
+
+This challenge builds on the previous ones by introducing the concept of a **Data URI**, which is often used in Android applications to pass structured data to activities. The challenge requires combining an intent action with a matching Data URI, testing your understanding of Android's intent system.
+
+### Solution
+
+1. Analyze the decompiled code to determine the conditions:
+   ```java
+   if (action == null || !action.equals("io.hextree.action.GIVE_FLAG")) {
+       return;
+   }
+
+   if (data == null || !data.toString().equals("https://app.hextree.io/map/android")) {
+       return;
+   }
+   ```
+
+   From the code, it's clear that the following conditions must be met:
+
+   - The intent must have the action **`io.hextree.action.GIVE_FLAG`**.
+
+   - The intent must include the data URI **`https://app.hextree.io/map/android`**.
+
+2. Construct an `adb` command to satisfy both conditions:
+   ```bash
+   adb shell am start -n io.hextree.attacksurface/.activities.Flag3Activity -a io.hextree.action.GIVE_FLAG -d https://app.hextree.io/map/android
+   ```
+
+
+3. Execute the command. The activity processes the intent, verifies both the action and the data URI, and then reveals the flag.
+    ![activity start](images/flag3image1.jpeg)
+
+### Explanation
+
+- **`-n`** specifies the component to start (package and activity).
+
+- **`-a`** sets the action for the intent.
+
+- **`-d`** adds the required data URI.
+
+
